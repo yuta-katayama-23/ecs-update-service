@@ -1,4 +1,3 @@
-
 const lambdaLocal = require('lambda-local');
 const path = require("path");
 const dotenv = require('dotenv')
@@ -6,11 +5,26 @@ dotenv.config();
 
 const regex = /test/;
 
+// const jsonPayload = {
+//     "detail-type": "ECR Image Action",
+//     "detail": {
+//         "result": "SUCCESS",
+//         "repository-name": "my-repository-name",
+//     }
+// }
 const jsonPayload = {
-    "detail-type": "ECR Image Action",
-    "detail": {
-        "result": "SUCCESS",
-        "repository-name": "my-repository-name",
+    "detail-type": "AWS API Call via CloudTrail",
+    resources: [],
+    detail: {
+        eventName: "ReplicateImage",
+        eventSource: "ecr.amazonaws.com",
+        responseElements: null,
+        resources: [
+            {
+                accountId: "111122223333",
+                ARN: "arn:aws:ecr:ap-northeast-1:111122223333:repository/repo-name"
+            }
+        ]
     }
 }
 
