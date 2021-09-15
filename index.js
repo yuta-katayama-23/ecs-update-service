@@ -18,13 +18,13 @@ exports.handler = async (event) => {
             return { result: "Not match regex." }
         }
 
-        // ECSのservice名がECRのrepository名と一致する想定
-        console.log("repository", repository)
         const input = {
             service, // service: service の ES6省略形
             cluster, // cluster: cluster の ES6省略形
             forceNewDeployment: true
         }
+        console.log("input", input);
+
         const command = new UpdateServiceCommand(input);
         const response = await client.send(command);
 
