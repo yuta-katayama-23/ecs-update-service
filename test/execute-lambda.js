@@ -5,13 +5,6 @@ dotenv.config();
 
 const regex = /test/;
 
-// const jsonPayload = {
-//     "detail-type": "ECR Image Action",
-//     "detail": {
-//         "result": "SUCCESS",
-//         "repository-name": "my-repository-name",
-//     }
-// }
 const jsonPayload = {
     "detail-type": "AWS API Call via CloudTrail",
     resources: [],
